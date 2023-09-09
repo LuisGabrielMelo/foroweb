@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" type="text/css" href="./src/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <h1>Crear Nueva Publicación</h1>
+    <form id="post-form">
+        <div>
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+            <label for="content">Contenido:</label>
+            <textarea id="content" name="content" rows="4" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Publicar</button>
+        </div>
+    </form>
+
+    <h2>Listado de Publicaciones</h2>
+    <ul id="post-list">
+        <!-- Aquí se mostrarán las publicaciones -->
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const postForm = document.getElementById('post-form');
+            const postList = document.getElementById('post-list');
+
+            postForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const title = document.getElementById('title').value;
+                const content = document.getElementById('content').value;
+                // Aquí puedes agregar la lógica para guardar la publicación en una base de datos o mostrarla en la lista.
+                // Por ahora, simplemente mostraremos la publicación en la lista.
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<strong>${title}</strong>: ${content}`;
+                postList.appendChild(listItem);
+                // Limpiar el formulario después de enviar la publicación.
+                postForm.reset();
+            });
+        });
+    </script>
+
+  </body>
+</html>
